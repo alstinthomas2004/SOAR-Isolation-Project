@@ -12,138 +12,185 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8f7f4;
-            color: #404040;
+            background-color: #f0f4f8; /* Lighter, more vibrant background */
+            color: #333; /* Darker text for better contrast */
         }
         .nav-link {
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        .nav-link:hover {
+            transform: translateY(-2px);
+            color: #4CAF50; /* Green hover for navigation */
         }
         .workflow-step {
             transition: all 0.3s ease;
             cursor: pointer;
+            border-color: #e2e8f0; /* Lighter border */
         }
         .workflow-step.active {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            border-color: #4f46e5;
+            transform: translateY(-8px) scale(1.02); /* More pronounced lift */
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.15), 0 6px 10px -3px rgba(0, 0, 0, 0.08); /* Stronger shadow */
+            border-color: #2196F3; /* Blue active border */
+            background-color: #e3f2fd; /* Light blue background for active step */
         }
         .workflow-step .step-number {
             transition: all 0.3s ease;
+            background-color: #90CAF9; /* Light blue initial number background */
+            color: #fff;
         }
         .workflow-step.active .step-number {
-            background-color: #4f46e5;
+            background-color: #2196F3; /* Darker blue active number background */
             color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         .workflow-line {
-            height: 2px;
-            background-color: #d1d5db;
+            height: 3px; /* Thicker line */
+            background-color: #BBDEFB; /* Light blue line */
+            position: relative;
         }
         .workflow-line::after {
             content: '▶';
-            color: #d1d5db;
+            color: #64B5F6; /* Blue arrow */
             position: absolute;
             right: -10px;
             top: -9px;
+            font-size: 1.2em;
         }
         .tech-card {
             transition: all 0.3s ease;
+            background-color: #ffffff;
+            border-color: #e2e8f0;
         }
         .tech-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1), 0 6px 10px -3px rgba(0, 0, 0, 0.06);
         }
         .detail-panel {
             display: none;
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn 0.6s ease-out forwards; /* Slightly longer fade-in */
         }
         .detail-panel.active {
             display: block;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(20px); } /* Start lower */
             to { opacity: 1; transform: translateY(0); }
+        }
+        .gradient-bg {
+            background: linear-gradient(to right, #64B5F6, #2196F3); /* Blue gradient for hero */
+            color: white;
+            padding: 8rem 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .gradient-bg h2 {
+            color: white;
+        }
+        .footer-bg {
+            background-color: #263238; /* Darker, sophisticated footer */
+            color: #CFD8DC;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #4CAF50; /* Green icons for features */
+        }
+        .skill-item, .enhancement-item {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .skill-item:hover, .enhancement-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .skill-item span, .enhancement-item span {
+            color: #2196F3; /* Blue check/arrow for lists */
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold text-gray-800">SOAR-Project</h1>
+            <h1 class="text-2xl font-bold text-gray-800 tracking-wide">SOAR-Project <span class="text-blue-600 text-3xl">⚡</span></h1>
             <div class="hidden md:flex space-x-8">
-                <a href="#overview" class="nav-link text-gray-600 hover:text-indigo-600">Overview</a>
-                <a href="#workflow" class="nav-link text-gray-600 hover:text-indigo-600">Workflow</a>
-                <a href="#stack" class="nav-link text-gray-600 hover:text-indigo-600">Tech Stack</a>
-                <a href="#skills" class="nav-link text-gray-600 hover:text-indigo-600">Skills</a>
+                <a href="#overview" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Overview</a>
+                <a href="#workflow" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Workflow</a>
+                <a href="#stack" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Tech Stack</a>
+                <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Skills</a>
             </div>
         </nav>
     </header>
 
     <main>
-        <section id="overview" class="py-20 md:py-32">
+        <section id="overview" class="gradient-bg">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">Automated Threat Detection & Response System</h2>
-                <p class="mt-6 text-lg text-gray-700 max-w-3xl mx-auto">This project showcases a fully implemented Security Orchestration, Automation, and Response (SOAR) pipeline that automatically detects a credential theft attack, orchestrates a response, and automates the isolation with minimal human intervention.</p>
-                <div class="mt-12 bg-white p-8 rounded-xl shadow-lg max-w-4xl mx-auto border border-gray-200">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">The Challenge</h3>
-                    <p class="text-gray-600">In today's security landscape, analysts are inundated with alerts. The manual process of investigating each one is slow and prone to error, delaying response times and increasing organizational risk. This project directly confronts this issue by automating the entire initial response workflow, freeing up valuable analyst time for more critical tasks.</p>
+                <h2 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">Automated Threat Detection & Response System</h2>
+                <p class="mt-6 text-xl text-blue-50 max-w-3xl mx-auto">This project showcases a fully implemented Security Orchestration, Automation, and Response (SOAR) pipeline that automatically detects a credential theft attack, orchestrates a response, and automates the isolation with minimal human intervention.</p>
+                <div class="mt-16 bg-white p-10 rounded-2xl shadow-xl max-w-4xl mx-auto border border-blue-100 transform hover:scale-[1.01] transition-transform duration-300">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-6 flex items-center justify-center">
+                        <span class="text-red-500 text-4xl mr-3">⚠️</span> The Challenge
+                    </h3>
+                    <p class="text-gray-700 text-lg leading-relaxed">In today's security landscape, analysts are inundated with alerts. The manual process of investigating each one is slow and prone to error, delaying response times and increasing organizational risk. This project directly confronts this issue by automating the entire initial response workflow, freeing up valuable analyst time for more critical tasks.</p>
                 </div>
             </div>
         </section>
 
-        <section id="workflow" class="py-20 bg-white">
+        <section id="workflow" class="py-24 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Interactive Workflow</h2>
-                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Click on each step below to see the details of the automated process, from initial attack to final containment.</p>
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">Interactive Workflow</h2>
+                    <p class="mt-5 text-xl text-gray-600 max-w-2xl mx-auto">Click on each step below to see the details of the automated process, from initial attack to final containment.</p>
                 </div>
 
                 <div id="workflow-diagram" class="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-4">
-                </div>
+                    </div>
                 
-                <div id="workflow-details" class="mt-16 min-h-[200px]">
-                </div>
+                <div id="workflow-details" class="mt-20 min-h-[250px] flex items-center justify-center">
+                    </div>
 
             </div>
         </section>
 
-        <section id="stack" class="py-20">
+        <section id="stack" class="py-24 bg-blue-50">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Technology Stack</h2>
-                    <p class="mt-4 text-lg text-gray-600">This project integrates several key technologies and tools to create a seamless automation pipeline.</p>
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">Technology Stack</h2>
+                    <p class="mt-5 text-xl text-gray-600 max-w-2xl mx-auto">This project integrates several key technologies and tools to create a seamless automation pipeline.</p>
                 </div>
-                <div id="tech-stack-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                </div>
+                <div id="tech-stack-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    </div>
             </div>
         </section>
 
-        <section id="skills" class="py-20 bg-white">
+        <section id="skills" class="py-24 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Skills & Future Enhancements</h2>
-                    <p class="mt-4 text-lg text-gray-600">This project demonstrates a practical application of crucial cybersecurity and automation skills.</p>
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">Skills & Future Enhancements</h2>
+                    <p class="mt-5 text-xl text-gray-600 max-w-2xl mx-auto">This project demonstrates a practical application of crucial cybersecurity and automation skills.</p>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <div>
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Key Learnings & Skills Demonstrated</h3>
-                        <ul id="skills-list" class="space-y-4">
-                        </ul>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-8 flex items-center"><span class="text-green-500 text-4xl mr-3">💡</span> Key Learnings & Skills Demonstrated</h3>
+                        <ul id="skills-list" class="space-y-6">
+                            </ul>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Potential Future Enhancements</h3>
-                         <ul id="enhancements-list" class="space-y-4">
-                        </ul>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-8 flex items-center"><span class="text-purple-500 text-4xl mr-3">🚀</span> Potential Future Enhancements</h3>
+                        <ul id="enhancements-list" class="space-y-6">
+                            </ul>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-gray-800 text-white py-8">
+    <footer class="footer-bg py-12">
         <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2025-[SOAR] Project . A demonstration of security automation capabilities.</p>
-            <p> ALSTIN THOMAS ABRAHAM </p>
+            <p class="text-lg mb-2">&copy; 2025 SOAR Project. A demonstration of cutting-edge security automation capabilities.</p>
+            <p class="text-xl font-semibold text-blue-300">ALSTIN THOMAS ABRAHAM</p>
         </div>
     </footer>
 
@@ -187,11 +234,11 @@
             
             workflowData.forEach((step, index) => {
                 const stepEl = document.createElement('div');
-                stepEl.className = 'workflow-step flex-1 w-full md:w-auto bg-white p-4 rounded-lg border-2 border-gray-200 text-center';
+                stepEl.className = 'workflow-step flex-1 w-full md:w-auto bg-white p-6 rounded-lg border-2 text-center shadow-sm';
                 stepEl.dataset.index = index;
                 stepEl.innerHTML = `
-                    <div class="step-number w-10 h-10 mx-auto rounded-full bg-gray-200 text-gray-700 font-bold flex items-center justify-center text-xl mb-3">${step.icon}</div>
-                    <h4 class="font-semibold text-gray-800">${index + 1}. ${step.title}</h4>
+                    <div class="step-number w-12 h-12 mx-auto rounded-full font-bold flex items-center justify-center text-2xl mb-4">${step.icon}</div>
+                    <h4 class="text-lg font-bold text-gray-800">${index + 1}. ${step.title}</h4>
                 `;
                 workflowDiagram.appendChild(stepEl);
 
@@ -202,12 +249,12 @@
                 }
 
                 const detailPanel = document.createElement('div');
-                detailPanel.className = 'detail-panel';
+                detailPanel.className = 'detail-panel w-full max-w-4xl';
                 detailPanel.dataset.index = index;
                 detailPanel.innerHTML = `
-                    <div class="bg-indigo-50 p-8 rounded-xl border border-indigo-200">
-                        <h3 class="text-2xl font-bold text-indigo-900 mb-3 flex items-center"><span class="text-3xl mr-3">${step.icon}</span> ${step.title}</h3>
-                        <p class="text-indigo-800 text-lg">${step.description}</p>
+                    <div class="bg-blue-100 p-10 rounded-2xl border border-blue-300 shadow-lg">
+                        <h3 class="text-3xl font-bold text-blue-800 mb-4 flex items-center"><span class="text-4xl mr-3">${step.icon}</span> ${step.title}</h3>
+                        <p class="text-blue-900 text-xl leading-relaxed">${step.description}</p>
                     </div>
                 `;
                 workflowDetails.appendChild(detailPanel);
@@ -216,22 +263,22 @@
             const techStackGrid = document.getElementById('tech-stack-grid');
             techStackData.forEach(tech => {
                 techStackGrid.innerHTML += `
-                    <div class="tech-card bg-white p-6 rounded-xl border border-gray-200">
-                        <div class="text-4xl mb-4">${tech.icon}</div>
-                        <h4 class="text-xl font-bold text-gray-800 mb-2">${tech.name}</h4>
-                        <p class="text-gray-600">${tech.role}</p>
+                    <div class="tech-card bg-white p-8 rounded-xl border border-gray-200 text-center shadow-sm">
+                        <div class="text-5xl mb-5 text-blue-600">${tech.icon}</div>
+                        <h4 class="text-2xl font-bold text-gray-800 mb-3">${tech.name}</h4>
+                        <p class="text-gray-700 leading-relaxed">${tech.role}</p>
                     </div>
                 `;
             });
 
             const skillsList = document.getElementById('skills-list');
             skillsData.forEach(skill => {
-                 skillsList.innerHTML += `
-                    <li class="flex items-start">
-                        <span class="text-indigo-500 mr-3 mt-1">✓</span>
+                skillsList.innerHTML += `
+                    <li class="flex items-start skill-item">
+                        <span class="text-blue-500 text-2xl mr-4 mt-1">✔</span>
                         <div>
-                            <h4 class="font-semibold text-gray-800">${skill.title}</h4>
-                            <p class="text-gray-600">${skill.description}</p>
+                            <h4 class="font-bold text-gray-800 text-xl mb-1">${skill.title}</h4>
+                            <p class="text-gray-700">${skill.description}</p>
                         </div>
                     </li>
                 `;
@@ -239,12 +286,12 @@
 
             const enhancementsList = document.getElementById('enhancements-list');
             enhancementsData.forEach(item => {
-                 enhancementsList.innerHTML += `
-                    <li class="flex items-start">
-                        <span class="text-indigo-500 mr-3 mt-1">▶</span>
-                         <div>
-                            <h4 class="font-semibold text-gray-800">${item.title}</h4>
-                            <p class="text-gray-600">${item.description}</p>
+                enhancementsList.innerHTML += `
+                    <li class="flex items-start enhancement-item">
+                        <span class="text-green-500 text-2xl mr-4 mt-1">✦</span>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-xl mb-1">${item.title}</h4>
+                            <p class="text-gray-700">${item.description}</p>
                         </div>
                     </li>
                 `;
@@ -271,6 +318,7 @@
                 });
             });
 
+            // Show the first step's details by default
             showStepDetails(0);
 
         });
