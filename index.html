@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOAR Project: Automated Threat Detection and Response System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f7f4;
+            color: #404040;
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .workflow-step {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .workflow-step.active {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-color: #4f46e5;
+        }
+        .workflow-step .step-number {
+            transition: all 0.3s ease;
+        }
+        .workflow-step.active .step-number {
+            background-color: #4f46e5;
+            color: #ffffff;
+        }
+        .workflow-line {
+            height: 2px;
+            background-color: #d1d5db;
+        }
+        .workflow-line::after {
+            content: '▶';
+            color: #d1d5db;
+            position: absolute;
+            right: -10px;
+            top: -9px;
+        }
+        .tech-card {
+            transition: all 0.3s ease;
+        }
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+        }
+        .detail-panel {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .detail-panel.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-gray-800">SOAR-Project</h1>
+            <div class="hidden md:flex space-x-8">
+                <a href="#overview" class="nav-link text-gray-600 hover:text-indigo-600">Overview</a>
+                <a href="#workflow" class="nav-link text-gray-600 hover:text-indigo-600">Workflow</a>
+                <a href="#stack" class="nav-link text-gray-600 hover:text-indigo-600">Tech Stack</a>
+                <a href="#skills" class="nav-link text-gray-600 hover:text-indigo-600">Skills</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="overview" class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">Automated Threat Detection & Response System</h2>
+                <p class="mt-6 text-lg text-gray-700 max-w-3xl mx-auto">This project showcases a fully implemented Security Orchestration, Automation, and Response (SOAR) pipeline that automatically detects a credential theft attack, orchestrates a response, and automates the isolation with minimal human intervention.</p>
+                <div class="mt-12 bg-white p-8 rounded-xl shadow-lg max-w-4xl mx-auto border border-gray-200">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">The Challenge</h3>
+                    <p class="text-gray-600">In today's security landscape, analysts are inundated with alerts. The manual process of investigating each one is slow and prone to error, delaying response times and increasing organizational risk. This project directly confronts this issue by automating the entire initial response workflow, freeing up valuable analyst time for more critical tasks.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="workflow" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Interactive Workflow</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Click on each step below to see the details of the automated process, from initial attack to final containment.</p>
+                </div>
+
+                <div id="workflow-diagram" class="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-4">
+                </div>
+                
+                <div id="workflow-details" class="mt-16 min-h-[200px]">
+                </div>
+
+            </div>
+        </section>
+
+        <section id="stack" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Technology Stack</h2>
+                    <p class="mt-4 text-lg text-gray-600">This project integrates several key technologies and tools to create a seamless automation pipeline.</p>
+                </div>
+                <div id="tech-stack-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Skills & Future Enhancements</h2>
+                    <p class="mt-4 text-lg text-gray-600">This project demonstrates a practical application of crucial cybersecurity and automation skills.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Key Learnings & Skills Demonstrated</h3>
+                        <ul id="skills-list" class="space-y-4">
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Potential Future Enhancements</h3>
+                         <ul id="enhancements-list" class="space-y-4">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025-[SOAR] Project . A demonstration of security automation capabilities.</p>
+            <p> ALSTIN THOMAS ABRAHAM </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const workflowData = [
+                { title: "Attack Simulation", icon: "💥", description: "On the Windows VM, the Lazagne tool is executed to simulate a credential-stealing attack." },
+                { title: "Threat Detection", icon: "🛡️", description: "The LimaCharlie EDR agent, running on the VM, detects the suspicious activity (e.g., unauthorized access to sensitive files or processes) and generates a security alert." },
+                { title: "SOAR Orchestration", icon: "⚙️", description: "The LimaCharlie alert is automatically sent to Tines, triggering the custom-built SOAR automation workflow." },
+                { title: "Data Enrichment", icon: "🔍", description: "The Tines workflow ingests the alert data and performs automated enrichment actions, such as extracting host/user info and querying LimaCharlie for more context." },
+                { title: "Communication & Approval", icon: "💬", description: "Tines sends a formatted message to a Slack channel with key details and an interactive button for an analyst to approve or deny a response action (e.g., isolating the host)." },
+                { title: "Automated Response", icon: "⚡", description: "Based on the analyst's input in Slack, the Tines workflow takes the final action. If approved, Tines sends an API call back to LimaCharlie to automatically isolate the host from the network." }
+            ];
+
+            const techStackData = [
+                { name: "Tines", role: "The central SOAR platform used to build and orchestrate the automated workflow.", icon: "⚙️" },
+                { name: "LimaCharlie", role: "The EDR platform deployed on the VM, responsible for endpoint monitoring and threat detection.", icon: "🛡️" },
+                { name: "Windows VM", role: "A virtualized environment used to simulate a compromised host and execute the attack.", icon: "💻" },
+                { name: "Lazagne", role: "A credential recovery tool used to simulate the malicious activity on the Windows VM.", icon: "🔑" },
+                { name: "Slack", role: "The communication channel for real-time alerts and human approval for critical response actions.", icon: "💬" }
+            ];
+            
+            const skillsData = [
+                { title: "SOAR Principles", description: "Ability to design and implement a security automation workflow that improves efficiency and consistency." },
+                { title: "Tool Integration", description: "Practical experience connecting disparate security tools (EDR, SOAR, communication) using APIs and webhooks." },
+                { title: "Threat Simulation", description: "Understanding of attack vectors and the ability to safely simulate malicious activity for testing and validation." },
+                { title: "Automation Logic", description: "Proficiency in building logical, conditional workflows to make automated decisions based on real-time data." },
+                { title: "Problem-Solving", description: "Ability to solve a real-world security challenge by leveraging a combination of application-based tools." }
+            ];
+
+            const enhancementsData = [
+                { title: "Ticketing System Integration", description: "Automatically create a ticket in a platform like Jira or ServiceNow for the security team to track the incident." },
+                { title: "Threat Intelligence Enrichment", description: "Automatically query a threat intelligence platform (e.g., VirusTotal) to check for known malicious hashes or IP addresses." },
+                { title: "Advanced Response Actions", description: "Add more granular response actions, such as terminating the malicious process or deleting the file." }
+            ];
+
+
+            const workflowDiagram = document.getElementById('workflow-diagram');
+            const workflowDetails = document.getElementById('workflow-details');
+            
+            workflowData.forEach((step, index) => {
+                const stepEl = document.createElement('div');
+                stepEl.className = 'workflow-step flex-1 w-full md:w-auto bg-white p-4 rounded-lg border-2 border-gray-200 text-center';
+                stepEl.dataset.index = index;
+                stepEl.innerHTML = `
+                    <div class="step-number w-10 h-10 mx-auto rounded-full bg-gray-200 text-gray-700 font-bold flex items-center justify-center text-xl mb-3">${step.icon}</div>
+                    <h4 class="font-semibold text-gray-800">${index + 1}. ${step.title}</h4>
+                `;
+                workflowDiagram.appendChild(stepEl);
+
+                if (index < workflowData.length - 1) {
+                    const line = document.createElement('div');
+                    line.className = 'workflow-line w-full md:w-1/6 relative hidden md:block';
+                    workflowDiagram.appendChild(line);
+                }
+
+                const detailPanel = document.createElement('div');
+                detailPanel.className = 'detail-panel';
+                detailPanel.dataset.index = index;
+                detailPanel.innerHTML = `
+                    <div class="bg-indigo-50 p-8 rounded-xl border border-indigo-200">
+                        <h3 class="text-2xl font-bold text-indigo-900 mb-3 flex items-center"><span class="text-3xl mr-3">${step.icon}</span> ${step.title}</h3>
+                        <p class="text-indigo-800 text-lg">${step.description}</p>
+                    </div>
+                `;
+                workflowDetails.appendChild(detailPanel);
+            });
+
+            const techStackGrid = document.getElementById('tech-stack-grid');
+            techStackData.forEach(tech => {
+                techStackGrid.innerHTML += `
+                    <div class="tech-card bg-white p-6 rounded-xl border border-gray-200">
+                        <div class="text-4xl mb-4">${tech.icon}</div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-2">${tech.name}</h4>
+                        <p class="text-gray-600">${tech.role}</p>
+                    </div>
+                `;
+            });
+
+            const skillsList = document.getElementById('skills-list');
+            skillsData.forEach(skill => {
+                 skillsList.innerHTML += `
+                    <li class="flex items-start">
+                        <span class="text-indigo-500 mr-3 mt-1">✓</span>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">${skill.title}</h4>
+                            <p class="text-gray-600">${skill.description}</p>
+                        </div>
+                    </li>
+                `;
+            });
+
+            const enhancementsList = document.getElementById('enhancements-list');
+            enhancementsData.forEach(item => {
+                 enhancementsList.innerHTML += `
+                    <li class="flex items-start">
+                        <span class="text-indigo-500 mr-3 mt-1">▶</span>
+                         <div>
+                            <h4 class="font-semibold text-gray-800">${item.title}</h4>
+                            <p class="text-gray-600">${item.description}</p>
+                        </div>
+                    </li>
+                `;
+            });
+
+
+            const workflowSteps = document.querySelectorAll('.workflow-step');
+            const detailPanels = document.querySelectorAll('.detail-panel');
+
+            function showStepDetails(index) {
+                workflowSteps.forEach(s => s.classList.remove('active'));
+                detailPanels.forEach(p => p.classList.remove('active'));
+
+                const activeStep = document.querySelector(`.workflow-step[data-index='${index}']`);
+                const activePanel = document.querySelector(`.detail-panel[data-index='${index}']`);
+                
+                if (activeStep) activeStep.classList.add('active');
+                if (activePanel) activePanel.classList.add('active');
+            }
+
+            workflowSteps.forEach(step => {
+                step.addEventListener('click', () => {
+                    showStepDetails(step.dataset.index);
+                });
+            });
+
+            showStepDetails(0);
+
+        });
+    </script>
+</body>
+</html>
